@@ -60,4 +60,3 @@ Navbar.propTypes = {
 
 export default Navbar;
 
-

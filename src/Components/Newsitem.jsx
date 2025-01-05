@@ -1,4 +1,3 @@
-
 import PropTypes from "prop-types";
 
 const Newsitem = ({ title, description, src, url }) => {
