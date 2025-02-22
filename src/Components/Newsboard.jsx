@@ -20,13 +20,13 @@ const Newsboard = ({ category }) => {
 
         if (selectedDate) {
           const formattedDate = new Date(selectedDate).toISOString().split("T")[0];
-          url = `http://newsapi.org/v2/everything?q=${category}&from=${formattedDate}&to=${formattedDate}&sortBy=publishedAt&apiKey=${apikey}`;
+          url = `https://newsapi.org/v2/everything?q=${category}&from=${formattedDate}&to=${formattedDate}&sortBy=publishedAt&apiKey=${apikey}`;
 
           if (formattedDate === today) {
-            url = `http://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apikey}`;
+            url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apikey}`;
           }
         } else {
-          url = `http://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apikey}`;
+          url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apikey}`;
         }
 
         const response = await fetch(url);
