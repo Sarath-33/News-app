@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Newsitem from "./Newsitem";
 import "../App.css";       
-
 const Newsboard = ({ category }) => {
+  const apikey = import.meta.env.VITE_NEWS_API_KEY
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,13 +20,13 @@ const Newsboard = ({ category }) => {
 
         if (selectedDate) {
           const formattedDate = new Date(selectedDate).toISOString().split("T")[0];
-          url = `https://newsapi.org/v2/everything?q=${category}&from=${formattedDate}&to=${formattedDate}&sortBy=publishedAt&apiKey=4c3371c924b242bcbfcf220b8eac1dff`;
+          url = `http://newsapi.org/v2/everything?q=${category}&from=${formattedDate}&to=${formattedDate}&sortBy=publishedAt&apiKey=${apikey}`;
 
           if (formattedDate === today) {
-            url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=4c3371c924b242bcbfcf220b8eac1dff`;
+            url = `http://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apikey}`;
           }
         } else {
-          url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=4c3371c924b242bcbfcf220b8eac1dff`;
+          url = `http://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apikey}`;
         }
 
         const response = await fetch(url);
